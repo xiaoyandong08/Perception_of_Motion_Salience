@@ -19,15 +19,18 @@ tau_threshold = [0.25];
 correlation_threshold = 0.8;
 
 % load /Users/yandongxiao/XYD_Data/nchoosek_2to1000.mat
-% [Delay,Delay_neg,max_motion_delay,rou,max_rou] = Mapping_Leader_follow_network_anis_factor_with_MST(Frame_matrix,tracks_filt,anis_factor,time_pair,findRou,tau_threshold,correlation_threshold);
-% Delay_neg(isnan(Delay_neg))=0;
-% 
+for i = 2 : 1000
+    time_pair{i} = nchoosek(1:i,2);
+end
+[Delay,Delay_neg,max_motion_delay,rou,max_rou] = Mapping_Leader_follow_network_anis_factor_with_MST(Frame_matrix,tracks_filt,anis_factor,time_pair,findRou,tau_threshold,correlation_threshold);
+Delay_neg(isnan(Delay_neg))=0;
+
 % clearvars time_pair
 % save(['One_frame_results_anis=' num2str(anis_factor) '_frame' num2str(Frame) '_Mobbing.mat'],'Frame','Frame_matrix','tracks_filt',...
 %     'anis_factor','Delay','Delay_neg','max_motion_delay','rou','max_rou','-v7.3')
 
 
-load One_frame_results_anis=0_frame2673_Mobbing.mat
+% load One_frame_results_anis=0_frame2673_Mobbing.mat
 
 
 
@@ -144,13 +147,3 @@ end
 
 
 end
-
-
-
-
-
-
-
-
-
-
